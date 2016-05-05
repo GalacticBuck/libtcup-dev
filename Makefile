@@ -33,8 +33,13 @@ obj/%.o: src/*/%.c
 	$(CC) $(CC_FLAGS) -c -fPIC -o $@ $< $(LIB)
 
 
-.Phony:clean
+.Phony:clean gitpush
 	
 clean:
 	rm -r obj/*.o
 	rm -r $(OUTPUT_DIR)
+
+gitpush: 
+	git add --all
+	git commit -m "$(msg)"
+	git push
